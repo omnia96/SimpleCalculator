@@ -1,0 +1,13 @@
+.keys-container{
+    width: 100vw;
+    height: 65vh;
+    background-color: #505050;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
+}
+.keys{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
