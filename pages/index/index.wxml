@@ -1,4 +1,19 @@
 <!--index.wxml-->
 <view class="container">
-  
+    <view class="header"></view>
+    <view class="content">{{number}}</view>
+    <view class="tools"></view>
+    <view class="keys-container">
+        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="+">+</view>
+        <view class="keys" bind:tap="handleKeyTap" id="1">1</view>
+        <view class="keys" bind:tap="handleKeyTap" id="2">2</view>
+        <view class="keys" bind:tap="handleKeyTap" id="3">3</view>
+        <view class="keys" bind:tap="handleKeyTap" id="4">4</view>
+        <view class="keys" bind:tap="handleKeyTap" id="5">5</view>
+        <view class="keys" bind:tap="handleKeyTap" id="6">6</view>
+        <view class="keys" bind:tap="handleKeyTap" id="7">7</view>
+        <view class="keys" bind:tap="handleKeyTap" id="8">8</view>
+        <view class="keys" bind:tap="handleKeyTap" id="9">9</view>
+        <view class="keys" bind:tap="handleKeyTap" id="0">0</view>
+    </view>
 </view>
