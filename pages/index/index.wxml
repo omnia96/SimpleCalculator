@@ -15,5 +15,6 @@
         <view class="keys" bind:tap="handleKeyTap" id="8">8</view>
         <view class="keys" bind:tap="handleKeyTap" id="9">9</view>
         <view class="keys" bind:tap="handleKeyTap" id="0">0</view>
+        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="=">=</view>
     </view>
 </view>
