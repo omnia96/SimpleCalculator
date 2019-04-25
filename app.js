@@ -1,10 +1,13 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    var that= this 
+    var history = that.getCache("history")
+    if(history == false){
+      var arr = []
+      arr.push("历史记录")
+      that.setCache("history",arr)
+    }
   },
   globalData: {
     

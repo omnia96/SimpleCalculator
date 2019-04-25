@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "D-icon":"/components/D-icon/index"
+  }
 }

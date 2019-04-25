@@ -1,27 +1,58 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="header">{{notes}}{{CalculatingKeyShow}}</view>
-    <view class="content">
-      <view>{{result}}</view>
+  <view class='historys-view' style="visibility:{{visibility}};">
+    <scroll-view class="historys-scroll" scroll-y="{{true}}">
+      <view class="historys-item" wx:for="{{historys}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+        {{item}}
+      </view>
+    </scroll-view>
+    <view class="delete">
+      <view bind:tap="handleDeleteHistorys">
+<D-icon iconName="fa fa-trash-o" size="5vh"/></view>
+      </view>
+      
+  </view>
+  <view class='header'>
+    <view class='title'>标准</view>
+    <view class='historys' bind:tap="handleHistoryChenge">
+<D-icon iconName="fa fa-history" size="4vh"/>
+
     </view>
-    <view class="tools"></view>
-    <view class="keys-container">
-        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="+">+</view>
-        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="-">-</view>
-        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="×">×</view>
-        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="÷">÷</view>
-        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="·">·</view>
-        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="±">±</view>
-        <view class="keys" bind:tap="handleKeyTap" id="1">1</view>
-        <view class="keys" bind:tap="handleKeyTap" id="2">2</view>
-        <view class="keys" bind:tap="handleKeyTap" id="3">3</view>
-        <view class="keys" bind:tap="handleKeyTap" id="4">4</view>
-        <view class="keys" bind:tap="handleKeyTap" id="5">5</view>
-        <view class="keys" bind:tap="handleKeyTap" id="6">6</view>
-        <view class="keys" bind:tap="handleKeyTap" id="7">7</view>
-        <view class="keys" bind:tap="handleKeyTap" id="8">8</view>
-        <view class="keys" bind:tap="handleKeyTap" id="9">9</view>
-        <view class="keys" bind:tap="handleKeyTap" id="0">0</view>
-        <view class="keys" bind:tap="handleCalculatingKeyTap" id ="=">=</view>
+  </view>
+  <view class="Sub-content">{{notes}}{{CalculatingKeyShow}}</view>
+  <view class="content">
+    <view>{{result}}</view>
+  </view>
+  <view class="tools"></view>
+  <view class="keys-container">
+
+    <view class="keys" bind:tap="handleToolsKeyTap" id="CE">CE</view>
+    <view class="keys" bind:tap="handleToolsKeyTap" id="C">C</view>
+    <view class="keys" bind:tap="handleToolsKeyTap" id="back">
+      <D-icon iconName="fa fa-reply" size="4vh"/>
     </view>
+    <view class="keys" bind:tap="handleCalculatingKeyTap" id="÷">÷</view>
+
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="7">7</view>
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="8">8</view>
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="9">9</view>
+    <view class="keys" bind:tap="handleCalculatingKeyTap" id="×">×</view>
+
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="4">4</view>
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="5">5</view>
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="6">6</view>
+    <view class="keys" bind:tap="handleCalculatingKeyTap" id="-">-</view>
+
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="1">1</view>
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="2">2</view>
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="3">3</view>
+    <view class="keys" bind:tap="handleCalculatingKeyTap" id="+">+</view>
+
+    <view class="keys" bind:tap="handleCalculatingKeyTap" id="±">±</view>
+    <view class="keys keys-num" bind:tap="handleKeyTap" id="0">0</view>
+    <view class="keys" bind:tap="handleCalculatingKeyTap" id="·">·</view>
+    <view class="keys" bind:tap="handleCalculatingKeyTap" id="=">=</view>
+
+  </view>
+
 </view>

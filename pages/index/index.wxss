@@ -1,8 +1,25 @@
+.container{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: rgb(230, 230, 230);
+  color: black;
+}
 .header{
+  width: 94vw;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0,0.05);
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+.Sub-content{
   width: 100vw;
   height: 5vh;
-  background-color: #505050;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: row-reverse;
   justify-content: end;
@@ -12,8 +29,7 @@
 .content{
   width: 100vw;
   height: 10vh;
-  background-color: #808080;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -22,15 +38,52 @@
 }
 .keys-container{
     width: 100vw;
-    height: 65vh;
-    background-color: #505050;
+    height: 80vh;
+    background-color: rgba(0, 0, 0, 0.05);
     display: grid;
-    grid-template-rows: auto auto auto auto auto auto;
-    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    align-content: center;
+    grid-template-rows: repeat(5,15.2vh);
+    grid-template-columns: repeat(4,23.6vw);
+    grid-gap: 3px;
 }
 .keys{
+  background-color: rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    font-size: 5vh;
+}
+.keys-num{
+  background-color: rgba(255, 255, 255, 0.95);
+}
+.historys-view{
+  width: 100vw;
+  height: 80vh;
+  top: 20vh;
+  position: fixed;
+  background-color: rgba(240, 240, 240, 0.95);
+}
+.historys-scroll{
+  width: 100vw;
+  height: 70vh;
+}
+.historys-item{
+  width: 96vw;
+  text-align: end;
+  padding: 2vw;
+}
+.delete{
+  width: 100vw;
+  height: 10vh;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: row-reverse;
+}
+.delete view{
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
