@@ -1,3 +1,25 @@
+.header{
+  width: 100vw;
+  height: 5vh;
+  background-color: #505050;
+  color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: end;
+  align-items: center;
+  font-size: 3vh;
+}
+.content{
+  width: 100vw;
+  height: 10vh;
+  background-color: #808080;
+  color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content:start;
+  font-size: 10vh;
+}
 .keys-container{
     width: 100vw;
     height: 65vh;
@@ -10,4 +32,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 }

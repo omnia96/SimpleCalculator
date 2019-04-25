@@ -9,7 +9,9 @@ Page({
     number1: Number,
     number2: Number,
     CalculatingKey: "",
-    notes:""
+    CalculatingKeyShow: "",
+    notes:"",
+    decimalPoint:true
   },
   onLoad: function () {
 
@@ -18,12 +20,10 @@ Page({
     console.log(e.target.id)
     var that = this
     var number = that.data.number
-    var notes = that.data.notes
     console.log(number)
     that.setData({
       number: number + e.target.id,
-      result: number + e.target.id,
-      notes:notes + e.target.id
+      result: number + e.target.id
     })
   },
   handleCalculatingKeyTap: function (e) {
@@ -32,68 +32,83 @@ Page({
     var number = that.data.number
     if (number != "") {
       switch (e.target.id) {
+        case "·":
+        var decimalPoint = that.data.decimalPoint
+          if(decimalPoint == true){
+            var number = that.data.number
+            that.setData({
+              number:number + ".",
+              result:number + ".",
+              decimalPoint:false
+            })
+          }
+          
+          break;
         case "+":
           that.setData({
             number1: number,
             number: "",
             CalculatingKey: "+",
+            decimalPoint:true
+          })
+          var number1 = that.data.number1
+          that.setData({
+            notes:number1,
+            CalculatingKeyShow:e.target.id
           })
           break;
         case "-":
           that.setData({
             number1: number,
             number: "",
-            CalculatingKey: "-"
+            CalculatingKey: "-",
+            decimalPoint:true
+          })
+          var number1 = that.data.number1
+          that.setData({
+            notes:number1,
+            CalculatingKeyShow:e.target.id
           })
           break;
         case "×":
           that.setData({
             number1: number,
             number: "",
-            CalculatingKey: "×"
+            CalculatingKey: "×",
+            decimalPoint:true
+          })
+          var number1 = that.data.number1
+          that.setData({
+            notes:number1,
+            CalculatingKeyShow:e.target.id
           })
           break;
         case "÷":
           that.setData({
             number1: number,
             number: "",
-            CalculatingKey: "÷"
+            CalculatingKey: "÷",
+            decimalPoint:true
+          })
+          var number1 = that.data.number1
+          that.setData({
+            notes:number1,
+            CalculatingKeyShow:e.target.id
           })
           break;
-        default:
+          case "±":
+            var number = parseFloat(that.data.number)
+            that.setData({
+              number: -(number),
+              result:-(number)
+            })
           break;
-      }
-      that.setData({
-        notes:that.data.notes+that.data.CalculatingKey
-      })
-    }else{
-      that.setData({
-        CalculatingKey:e.target.id,
-        notes:number+that.data.CalculatingKey
-      })
-    }
-    if (e.target.id == "±") {
-      if (that.data.number != "") {
-        var number = parseFloat(that.data.number)
-        that.setData({
-          number: -(number)
-        })
-      } else {
-        var number = parseFloat(that.data.number1)
-        that.setData({
-          number1: -(number)
-        })
-      }
-
-    }
-
-    if (e.target.id == "=") {
-      if (that.data.number != "") {
-        that.setData({
-          number2: that.data.number
-        })
-      }
-      var result = 0;
+          case "=":
+          that.setData({
+            number2: that.data.number,
+            decimalPoint:true
+          })
+          var result = 0;
       switch (that.data.CalculatingKey) {
         case "+":
           result = that.Addition(that.data.number1, that.data.number2)
@@ -112,15 +127,85 @@ Page({
         default:
           break;
       }
+      var cache = app.getCache("history")
+      var history = []
+    if(cache != false){
+      
+      history = cache
+      history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
+      app.setCache("history",history)
+    }else{
+      history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
+      app.setCache("history",history)
+    }
       that.setData({
         number: "",
         result: result,
         number1: result,
-        notes:""
+        notes:"",
+        CalculatingKeyShow:""
       })
       
+      
+        break;
+        default:
+          break;
+      }
+    }else{
+      switch (e.target.id) {
+        case "±":
+          
+          break;
+          case "·":
+          break;
+        case "=":
+        var result = 0;
+        switch (that.data.CalculatingKey) {
+          case "+":
+            result = that.Addition(that.data.number1, that.data.number2)
+            break;
+          case "-":
+            result = that.Subtraction(that.data.number1, that.data.number2)
+            break;
+          case "×":
+            result = parseFloat(that.data.number1) * parseFloat(that.data.number2)
+            break;
+          case "÷":
+            result = parseFloat(that.data.number1) / parseFloat(that.data.number2)
+            break;
+  
+  
+          default:
+            break;
+        }
+        var cache = app.getCache("history")
+        var history = []
+      if(cache != false){
+        
+        history = cache
+        history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
+        app.setCache("history",history)
+      }else{
+        history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
+        app.setCache("history",history)
+      }
+        that.setData({
+          number: "",
+          result: result,
+          number1: result,
+          notes:"",
+          CalculatingKeyShow:""
+        })
+        
+        break;
+        default:
+        that.setData({
+              CalculatingKeyShow:e.target.id,
+              CalculatingKey:e.target.id
+            })
+          break;
+      }
     }
-
   },
   Addition: function (number1, number2) {
 
@@ -128,5 +213,9 @@ Page({
   },
   Subtraction: function (number1, number2) {
     return parseFloat(number1) - parseFloat(number2)
+  },
+  backSpace:function(string) {
+    string = string.substr(0,length-1)
+    return string
   }
 })

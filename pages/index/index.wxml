@@ -1,7 +1,9 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="header">{{notes}}</view>
-    <view class="content">{{result}}</view>
+    <view class="header">{{notes}}{{CalculatingKeyShow}}</view>
+    <view class="content">
+      <view>{{result}}</view>
+    </view>
     <view class="tools"></view>
     <view class="keys-container">
         <view class="keys" bind:tap="handleCalculatingKeyTap" id ="+">+</view>
