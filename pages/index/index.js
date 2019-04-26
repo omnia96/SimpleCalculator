@@ -12,31 +12,58 @@ Page({
     CalculatingKeyShow: "",
     notes: "",
     decimalPoint: true,
-    visibility:"hidden",
-    historys:null
+    visibility: "hidden",
+    historys: null,
+    animation: null,
+    navigationState:"hidden",
+    navigationAnimation:null
   },
   onLoad: function () {
 
   },
-  onShow(){
+  onShow() {
     var that = this
     var historys = app.getCache("history")
-    if(historys != false){
+    if (historys != false) {
       that.setData({
         historys: historys
       })
     }
   },
-  handleHistoryChenge(){
+  handleNavigationChenge(){
     var that = this
-    if(that.data.visibility == "hidden"){
+    if (that.data.navigationState == "hidden") {
       that.setData({
-        visibility:"visable"
+        navigationState: "visable",
+        navigationAnimation:"navigation-menu-show 1s"
       })
-    }else{
+    } else {
       that.setData({
-        visibility: "hidden"
+        navigationAnimation: "navigation-menu-hide 1s"
       })
+      setTimeout(function () {
+        that.setData({
+          navigationState: "hidden"
+        })
+      }, 1000)
+    }
+  },
+  handleHistoryChenge() {
+    var that = this
+    if (that.data.visibility == "hidden") {
+      that.setData({
+        visibility: "visable",
+        animation: "historys-show 1s"
+      })
+    } else {
+      that.setData({
+        animation: "historys-hide 1s"
+      })
+      setTimeout(function () {
+        that.setData({
+          visibility: "hidden"
+        })
+      }, 1000)
     }
   },
   handleKeyTap: function (e) {
@@ -65,8 +92,8 @@ Page({
         break;
       case "CE":
         that.setData({
-          result:0,
-          number:""
+          result: 0,
+          number: ""
         })
         break;
       case "C":
@@ -84,13 +111,13 @@ Page({
         break;
     }
   },
-  handleDeleteHistorys(){
+  handleDeleteHistorys() {
     var that = this
     var arr = []
     arr.push("历史记录")
-    app.setCache("history",arr)
+    app.setCache("history", arr)
     that.setData({
-      historys:arr
+      historys: arr
     })
   },
   handleCalculatingKeyTap: function (e) {
@@ -195,21 +222,21 @@ Page({
           }
           var cache = app.getCache("history")
           var history = []
-        
-            console.log(that.data.number1)
-            if(that.data.number1 != "" && that.data.number2 != ""){
-              history = cache
-              history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
-              app.setCache("history", history)
-            }
-        
+
+          console.log(that.data.number1)
+          if (that.data.number1 != "" && that.data.number2 != "") {
+            history = cache
+            history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
+            app.setCache("history", history)
+          }
+
           that.setData({
             number: "",
             result: result,
             number1: result,
             notes: "",
             CalculatingKeyShow: "",
-            historys:history
+            historys: history
           })
 
 
@@ -220,7 +247,6 @@ Page({
     } else {
       switch (e.target.id) {
         case "±":
-
           break;
         case "·":
           break;
@@ -239,27 +265,25 @@ Page({
             case "÷":
               result = parseFloat(that.data.number1) / parseFloat(that.data.number2)
               break;
-
-
             default:
               break;
           }
           var cache = app.getCache("history")
           var history = []
-        
-            console.log(that.data.number1)
-            if(that.data.number1 != "" && that.data.number2 != ""){
-              history = cache
-              history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
-              app.setCache("history", history)
-            }
+
+          console.log(that.data.number1)
+          if (that.data.number1 != "" && that.data.number2 != "") {
+            history = cache
+            history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
+            app.setCache("history", history)
+          }
           that.setData({
             number: "",
             result: result,
             number1: result,
             notes: "",
             CalculatingKeyShow: "",
-            historys:history
+            historys: history
           })
 
           break;

@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class='historys-view' style="visibility:{{visibility}};">
+  <view class='historys-view' style="visibility:{{visibility}}; animation:{{animation}};">
     <scroll-view class="historys-scroll" scroll-y="{{true}}">
       <view class="historys-item" wx:for="{{historys}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         {{item}}
@@ -8,14 +8,16 @@
     </scroll-view>
     <view class="delete">
       <view bind:tap="handleDeleteHistorys">
-<D-icon iconName="fa fa-trash-o" size="5vh"/></view>
+        <D-icon iconName="fa fa-trash-o" size="5vh" />
       </view>
-      
+    </view>
+
   </view>
+  <view class='navigation-menu' style="visibility:{{navigationState}}; animation:{{navigationAnimation}}"></view>
   <view class='header'>
-    <view class='title'>标准</view>
+    <view class='title' bind:tap='handleNavigationChenge'>标准</view>
     <view class='historys' bind:tap="handleHistoryChenge">
-<D-icon iconName="fa fa-history" size="4vh"/>
+      <D-icon iconName="fa fa-history"  size='4vh'/>
 
     </view>
   </view>
@@ -28,9 +30,7 @@
 
     <view class="keys" bind:tap="handleToolsKeyTap" id="CE">CE</view>
     <view class="keys" bind:tap="handleToolsKeyTap" id="C">C</view>
-    <view class="keys" bind:tap="handleToolsKeyTap" id="back">
-      <D-icon iconName="fa fa-reply" size="4vh"/>
-    </view>
+    <view class="keys" bind:tap="handleToolsKeyTap" id="back">←</view>
     <view class="keys" bind:tap="handleCalculatingKeyTap" id="÷">÷</view>
 
     <view class="keys keys-num" bind:tap="handleKeyTap" id="7">7</view>

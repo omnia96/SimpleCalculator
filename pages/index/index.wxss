@@ -2,8 +2,13 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: rgb(230, 230, 230);
+  /* background-color: rgb(230, 230, 230); */
   color: black;
+  background-color:#08AEEA;
+  /* background-image: linear-gradient(0deg,#08AEEA 0%,#2AF598 100%); */
+/* background-image: linear-gradient(19deg,#FAACA8 0%,#DDD6F3 100%); */
+background-image: linear-gradient(0deg,#FFDEE9 0%,#B5FFFC 100%);
+/* background-image: linear-gradient(0deg,#D9AFD9 0%,#97D9E1 100%); */
 }
 .header{
   width: 94vw;
@@ -53,6 +58,57 @@
     justify-content: center;
     align-items: center;
     font-size: 5vh;
+    position: relative;
+}
+
+.keys:hover{
+  animation: keys 1s;
+}
+.keys:active{
+   animation: keys-active 1s;
+}
+@keyframes keys-active{
+  from{
+border-bottom: 25px solid white;
+   border-right: 25px solid white;
+   border-top: 25px solid rgba(255,255,255, 0.2);
+   border-left: 25px solid rgba(255,255,255, 0.2);
+   filter: blur(2px);
+  }
+  to{
+    border-top: 2px solid white;
+   border-left: 2px solid white;
+   border-right: 2px solid rgba(255,255,255, 0.2);
+   border-bottom: 2px solid rgba(255,255,255, 0.2);
+  }
+}
+@keyframes keys{
+  0%{
+  border-bottom: 2px solid white;
+   border-right: 2px solid white;
+   border-top: 2px solid rgba(255,255,255, 0.2);
+   border-left: 2px solid rgba(255,255,255, 0.2);
+   font-size: 10vh;
+  }
+  50%{
+    border-top: 2px solid white;
+   border-left: 2px solid white;
+   border-right: 2px solid rgba(255,255,255, 0.2);
+   border-bottom: 2px solid rgba(255,255,255, 0.2);
+   
+  }
+  75%{
+    border-bottom: 2px solid white;
+   border-right: 2px solid white;
+   border-top: 2px solid rgba(255,255,255, 0.2);
+   border-left: 2px solid rgba(255,255,255, 0.2);
+  }
+  100%{
+     border-top: 2px solid white;
+   border-left: 2px solid white;
+   border-right: 2px solid rgba(255,255,255, 0.2);
+   border-bottom: 2px solid rgba(255,255,255, 0.2);
+  }
 }
 .keys-num{
   background-color: rgba(255, 255, 255, 0.95);
@@ -60,9 +116,10 @@
 .historys-view{
   width: 100vw;
   height: 80vh;
-  top: 20vh;
+  bottom: 0;
   position: fixed;
   background-color: rgba(240, 240, 240, 0.95);
+  z-index: 3;
 }
 .historys-scroll{
   width: 100vw;
@@ -76,14 +133,96 @@
 .delete{
   width: 100vw;
   height: 10vh;
-  /* background-color: aqua; */
   display: flex;
   flex-direction: row-reverse;
 }
+
 .delete view{
   width: 10vh;
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.delete view:hover{
+  animation: delete-hover 1s;
+}
+.historys:hover {
+  animation: historys-hover 1s;
+}
+@keyframes historys-hover{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(-360deg);
+  }
+}
+@keyframes delete-hover{
+  25%{
+transform:rotate(30deg);
+  }
+  50%{
+    transform:rotate(-30deg);
+  }
+  75%{
+    transform: rotate(30deg);
+  }
+}
+@keyframes historys-show{
+  from{
+    height: 0vh;
+  }
+  to{
+    height: 80vh;
+    filter: blur(5px);
+  }
+}
+@keyframes historys-hide{
+  from{
+    height: 80vh;
+    
+  }
+  to{
+    height: 0vh;
+    filter: blur(5px);
+  }
+}
+.navigation-menu{
+  height: 95vh;
+  width: 75vw;
+  bottom: 0;
+  position: fixed;
+  /* background-color: red; */
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+.navigation-menu::after{
+  content: "";
+  /* background-color: white; */
+  background-image: linear-gradient(0deg,rgba(255, 255, 255, 0.9) 0%,#B5FFFC 100%);
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  filter: blur(1px);
+}
+@keyframes navigation-menu-show{
+  from{
+    width: 0vw;
+  }
+  to{
+    width: 75vw;
+  }
+}
+@keyframes navigation-menu-hide{
+  from{
+    width: 75vw;
+  }
+  to{
+    width: 0vw;
+  }
 }
