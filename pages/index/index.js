@@ -306,5 +306,6 @@ Page({
   backSpace: function (string) {
     string = string.substr(0, length - 1)
     return string
-  }
+  },
+  onShareAppMessage(){}
 })
