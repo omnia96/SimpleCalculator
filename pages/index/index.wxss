@@ -39,7 +39,7 @@ background-image: linear-gradient(0deg,#FFDEE9 0%,#B5FFFC 100%);
   flex-direction: row-reverse;
   align-items: center;
   justify-content:start;
-  font-size: 10vh;
+  font-size: 14vw;
 }
 .keys-container{
     width: 100vw;

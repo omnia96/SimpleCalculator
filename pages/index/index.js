@@ -67,10 +67,10 @@ Page({
     }
   },
   handleKeyTap: function (e) {
-    console.log(e.target.id)
+    // console.log(e.target.id)
     var that = this
     var number = that.data.number
-    console.log(number)
+    // console.log(number)
     that.setData({
       number: number + e.target.id,
       result: number + e.target.id
@@ -122,7 +122,7 @@ Page({
   },
   handleCalculatingKeyTap: function (e) {
     var that = this
-    console.log(e.target.id)
+    // console.log(e.target.id)
     var number = that.data.number
     if (number != "") {
       switch (e.target.id) {
@@ -214,6 +214,8 @@ Page({
               break;
             case "÷":
               result = parseFloat(that.data.number1) / parseFloat(that.data.number2)
+              result = result.toFixed(9)
+              console.log(result)
               break;
 
 
@@ -223,7 +225,7 @@ Page({
           var cache = app.getCache("history")
           var history = []
 
-          console.log(that.data.number1)
+          // console.log(that.data.number1)
           if (that.data.number1 != "" && that.data.number2 != "") {
             history = cache
             history.push(that.data.number1 + that.data.CalculatingKey + that.data.number2 + "=" + result)
@@ -264,6 +266,7 @@ Page({
               break;
             case "÷":
               result = parseFloat(that.data.number1) / parseFloat(that.data.number2)
+              result = result.toFixed(9)
               break;
             default:
               break;
